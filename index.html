@@ -97,7 +97,7 @@
             border-radius: 20px;
             border: 1px solid #1a1a1a;
             text-align: center;
-            transition: border-color 0.4s, background 0.4s;
+            transition: all 0.4s ease;
             opacity: 0;
             display: flex;
             flex-direction: column;
@@ -108,6 +108,7 @@
             border-color: var(--gold);
             background: #151515;
             box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            transform: translateY(-5px);
         }
 
         .card-img-wrapper {
@@ -168,6 +169,7 @@
             background: #25d366;
             color: white;
             box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+            transform: scale(1.02);
         }
 
         .contact-section {
@@ -189,6 +191,11 @@
             background: var(--gold);
             color: black;
             transition: 0.3s;
+        }
+
+        .btn-main:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
         }
 
         footer {
@@ -220,7 +227,7 @@
                 <div class="card-img-wrapper"><img src="images/nfc.jpg" alt="NFC"></div>
                 <h3>Smart Business Cards</h3>
                 <p>One tap to share contacts, social media, and portfolios instantly.</p>
-                <a href="https://wa.me/916238690916?text=Interested in NFC Cards" class="btn-card-wa magnetic">
+                <a href="https://wa.me/916238690916?text=Interested in NFC Cards" class="btn-card-wa">
                     <i class="fab fa-whatsapp"></i> Enquire Now
                 </a>
             </div>
@@ -229,7 +236,7 @@
                 <div class="card-img-wrapper"><img src="images/review.jpg" alt="Review"></div>
                 <h3>Review Stands</h3>
                 <p>Instantly grow your Google ratings with NFC-enabled feedback stands.</p>
-                <a href="https://wa.me/916238690916?text=Interested in Review Stands" class="btn-card-wa magnetic">
+                <a href="https://wa.me/916238690916?text=Interested in Review Stands" class="btn-card-wa">
                     <i class="fab fa-whatsapp"></i> Enquire Now
                 </a>
             </div>
@@ -238,7 +245,7 @@
                 <div class="card-img-wrapper"><img src="images/menu.jpg" alt="Menu"></div>
                 <h3>Digital Menus</h3>
                 <p>Modernize your restaurant with contactless QR menu systems.</p>
-                <a href="https://wa.me/916238690916?text=Interested in Digital Menus" class="btn-card-wa magnetic">
+                <a href="https://wa.me/916238690916?text=Interested in Digital Menus" class="btn-card-wa">
                     <i class="fab fa-whatsapp"></i> Enquire Now
                 </a>
             </div>
@@ -247,7 +254,7 @@
                 <div class="card-img-wrapper"><img src="images/web.jpg" alt="Web"></div>
                 <h3>Web Development</h3>
                 <p>Professional single-page websites tailored for luxury brands.</p>
-                <a href="https://wa.me/916238690916?text=Interested in Web Development" class="btn-card-wa magnetic">
+                <a href="https://wa.me/916238690916?text=Interested in Web Development" class="btn-card-wa">
                     <i class="fab fa-whatsapp"></i> Enquire Now
                 </a>
             </div>
@@ -255,7 +262,7 @@
 
         <section class="contact-section">
             <h2 style="font-size: 2rem; margin-bottom: 30px; letter-spacing: 2px;">READY TO EVOLVE?</h2>
-            <a href="mailto:hey.castelyn@gmail.com" class="btn-main magnetic">
+            <a href="mailto:hey.castelyn@gmail.com" class="btn-main">
                 <i class="fas fa-envelope"></i> Send an Email
             </a>
         </section>
@@ -286,20 +293,6 @@
 
             gsap.to(".contact-section", {
                 scrollTrigger: ".contact-section", opacity: 1, duration: 2
-            });
-        });
-
-        // Magnetic Button Effect
-        const magnets = document.querySelectorAll('.magnetic');
-        magnets.forEach((btn) => {
-            btn.addEventListener('mousemove', (e) => {
-                const position = btn.getBoundingClientRect();
-                const x = e.pageX - position.left - position.width / 2;
-                const y = e.pageY - position.top - position.height / 2;
-                gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.5, ease: "power2.out" });
-            });
-            btn.addEventListener('mouseleave', () => {
-                gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
             });
         });
 

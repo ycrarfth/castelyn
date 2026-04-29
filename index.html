@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Castelyn™ | Smart Digital Solutions</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #d4af37;
+            --black: #080808;
+            --card-bg: #111111;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--text-main);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Interactive Background Glow */
+        #glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            transition: transform 0.1s ease-out;
+        }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .brand-logo {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-tagline {
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
+            letter-spacing: 4px;
+            color: var(--text-dim);
+            margin-top: 10px;
+            opacity: 0;
+        }
+
+        /* Services Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 100px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 50px 30px;
+            border-radius: 20px;
+            border: 1px solid #1a1a1a;
+            text-align: center;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(40px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px) scale(1.02);
+            background: #151515;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Round Image Styling */
+        .card-img-wrapper {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--gold);
+            margin-bottom: 25px;
+            background: #222;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            color: var(--gold);
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 120px 0;
+            text-align: center;
+            opacity: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-group {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 45px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: black;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #25d366;
+            color: #25d366;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        footer {
+            padding: 60px;
+            text-align: center;
+            color: #333;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+
+    </style>
+</head>
+<body>
+
+    <div id="glow"></div>
+
+    <header class="container">
+        <h1 class="brand-logo">Castelyn™</h1>
+        <p class="hero-tagline">Premium NFC & Digital Presence Solutions</p>
+    </header>
+
+    <main class="container">
+        <div class="grid">
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="images/nfc.jpg" alt="NFC Business Card">
+                </div>
+                <h3>Smart Business Cards</h3>
+                <p>One tap to share contacts, social media, and portfolios. The last business card you will ever need.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="images/review.jpg" alt="Google Review Stand">
+                </div>
+                <h3>Review Stands</h3>
+                <p>Instantly grow your Google ratings. Enable customers to leave feedback with a simple tap or scan.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="images/menu.jpg" alt="Digital Menu System">
+                </div>
+                <h3>Digital Menus</h3>
+                <p>Modernize your restaurant or cafe with contactless QR menus. Seamless, hygienic, and easy to manage.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="images/web.jpg" alt="Web Design Services">
+                </div>
+                <h3>Web Development</h3>
+                <p>Professional single-page websites tailored for luxury brands and high-performance businesses.</p>
+            </div>
+        </div>
+
+        <section class="contact-section">
+            <h2 style="font-size: 3rem; font-weight: 800; letter-spacing: -1px;">Ready to Evolve?</h2>
+            <p style="color: var(--text-dim); margin-top: 15px;">Contact us today for a free consultation.</p>
+            
+            <div class="btn-group">
+                <a href="https://wa.me/916238690916" class="btn btn-outline">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="mailto:hey.castelyn@gmail.com" class="btn btn-gold">
+                    <i class="fas fa-envelope"></i> Email Us
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 CASTELYN™ TECHNOLOGY. ENGINEERED FOR EXCELLENCE.
+    </footer>
+
+    <script>
+        // GSAP Setup
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Page Load Animation
+        window.addEventListener('load', () => {
+            const tl = gsap.timeline();
+            tl.to(".brand-logo", { opacity: 1, y: 0, duration: 1.2, ease: "power4.out" })
+              .to(".hero-tagline", { opacity: 1, duration: 1 }, "-=0.6");
+
+            // Service Cards Reveal
+            gsap.utils.toArray(".card").forEach((card, i) => {
+                gsap.to(card, {
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 90%",
+                    },
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    delay: i * 0.15
+                });
+            });
+
+            // Contact Section Reveal
+            gsap.to(".contact-section", {
+                scrollTrigger: ".contact-section",
+                opacity: 1,
+                duration: 1.5,
+                ease: "power2.out"
+            });
+        });
+
+        // Mouse Background Glow Effect
+        if (window.matchMedia("(min-width: 1024px)").matches) {
+            document.addEventListener("mousemove", (e) => {
+                gsap.to("#glow", {
+                    x: e.clientX - 200,
+                    y: e.clientY - 200,
+                    duration: 0.7
+                });
+            });
+        }
+    </script>
+</body>
+</html>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Castelyn™ | Smart Digital Solutions</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -39,6 +40,7 @@
             margin: 0 auto;
         }
 
+        /* Animated Background Glow */
         #glow {
             position: fixed;
             width: 400px;
@@ -50,6 +52,7 @@
             transition: transform 0.1s ease-out;
         }
 
+        /* Centered Header Section */
         header {
             height: 100vh;
             display: flex;
@@ -71,13 +74,18 @@
         }
 
         .hero-tagline {
-            font-size: clamp(0.8rem, 2vw, 1.2rem);
-            letter-spacing: 4px;
+            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+            letter-spacing: 3px;
             color: var(--text-dim);
-            margin-top: 10px;
+            margin-top: 15px;
             opacity: 0;
+            max-width: 450px; /* Kept narrow for premium look */
+            line-height: 1.6;
+            text-align: center;
+            text-transform: uppercase;
         }
 
+        /* Grid Section */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -109,8 +117,8 @@
         }
 
         .card-img-wrapper {
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             overflow: hidden;
             border: 2px solid var(--gold);
@@ -125,20 +133,21 @@
         }
 
         .card h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 12px;
             color: var(--gold);
+            letter-spacing: 1px;
         }
 
         .card p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-dim);
             line-height: 1.6;
             margin-bottom: 20px;
             flex-grow: 1;
         }
 
-        /* Card Specific WhatsApp Button */
+        /* WhatsApp Button for Cards */
         .btn-card-wa {
             width: 100%;
             padding: 12px;
@@ -146,7 +155,7 @@
             border: 1px solid #25d366;
             color: #25d366;
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
             border-radius: 10px;
             transition: 0.3s;
@@ -162,23 +171,16 @@
             color: white;
         }
 
+        /* Contact Section */
         .contact-section {
             padding: 120px 0;
             text-align: center;
             opacity: 0;
         }
 
-        .btn-group {
-            margin-top: 40px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
         .btn-main {
             padding: 18px 45px;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 800;
             text-transform: uppercase;
             text-decoration: none;
@@ -187,12 +189,27 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
+            background: var(--gold);
+            color: black;
         }
 
-        .btn-gold { background: var(--gold); color: black; }
-        .btn-gold:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+        .btn-main:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
 
-        footer { padding: 60px; text-align: center; color: #333; font-size: 0.75rem; letter-spacing: 3px; }
+        footer {
+            padding: 60px;
+            text-align: center;
+            color: #333;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+
     </style>
 </head>
 <body>
@@ -209,7 +226,7 @@
             <!-- Option 1 -->
             <div class="card">
                 <div class="card-img-wrapper">
-                    <img src="images/nfc.jpg" alt="NFC">
+                    <img src="images/nfc.jpg" alt="Smart Business Card">
                 </div>
                 <h3>Smart Business Cards</h3>
                 <p>One tap to share contacts, social media, and portfolios instantly.</p>
@@ -221,7 +238,7 @@
             <!-- Option 2 -->
             <div class="card">
                 <div class="card-img-wrapper">
-                    <img src="images/review.jpg" alt="Reviews">
+                    <img src="images/review.jpg" alt="Review Stand">
                 </div>
                 <h3>Review Stands</h3>
                 <p>Instantly grow your Google ratings with NFC-enabled feedback stands.</p>
@@ -233,7 +250,7 @@
             <!-- Option 3 -->
             <div class="card">
                 <div class="card-img-wrapper">
-                    <img src="images/menu.jpg" alt="Menu">
+                    <img src="images/menu.jpg" alt="Digital Menu">
                 </div>
                 <h3>Digital Menus</h3>
                 <p>Modernize your restaurant with contactless and easy-to-manage QR menus.</p>
@@ -245,7 +262,7 @@
             <!-- Option 4 -->
             <div class="card">
                 <div class="card-img-wrapper">
-                    <img src="images/web.jpg" alt="Web">
+                    <img src="images/web.jpg" alt="Web Development">
                 </div>
                 <h3>Web Development</h3>
                 <p>Professional single-page websites tailored for luxury brands.</p>
@@ -256,16 +273,14 @@
         </div>
 
         <section class="contact-section">
-            <h2 style="font-size: 2.5rem; font-weight: 800;">Ready to Evolve?</h2>
-            <div class="btn-group">
-                <a href="mailto:hey.castelyn@gmail.com" class="btn-main btn-gold">
-                    <i class="fas fa-envelope"></i> Email Us
-                </a>
-            </div>
+            <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 30px;">Ready to Evolve?</h2>
+            <a href="mailto:hey.castelyn@gmail.com" class="btn-main">
+                <i class="fas fa-envelope"></i> Send an Email
+            </a>
         </section>
     </main>
 
-    <footer>&copy; 2026 CASTELYN™ TECHNOLOGY</footer>
+    <footer>&copy; 2026 CASTELYN™ TECHNOLOGY SOLUTIONS</footer>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
@@ -286,6 +301,7 @@
             });
         });
 
+        // Background glow effect for Desktop
         if (window.matchMedia("(min-width: 1024px)").matches) {
             document.addEventListener("mousemove", (e) => {
                 gsap.to("#glow", { x: e.clientX - 200, y: e.clientY - 200, duration: 0.7 });
